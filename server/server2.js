@@ -15,7 +15,7 @@ const server = http.createServer((req, res) => {
         res.write("<h1>Contact Page</h1>");
     } 
     else if (url === "/senddata" && req.method === "POST") {
-        body = ""; 
+        body = ""; // Reset body for each request
 
         req.on("data", (chunk) => {
             body += chunk;
@@ -28,7 +28,7 @@ const server = http.createServer((req, res) => {
             res.end(JSON.stringify({ message: "Data Received", data: body }));
         });
 
-        return; 
+        return; // prevent extra res.end()
     } 
     else if (url === "/viewdata" && req.method === "GET") {
         res.setHeader("Content-Type","application/json")
@@ -50,9 +50,9 @@ const server = http.createServer((req, res) => {
         res.write("<h1>Page Not Found</h1>");
     }
 
-    res.end();
+    res.end(); // normal end
 });
 
-server.listen(3001, () => {
-    console.log("Server is running on port 3001");
+server.listen(5001, () => {
+    console.log("Server is running on port 5001");
 });
