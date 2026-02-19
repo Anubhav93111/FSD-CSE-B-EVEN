@@ -36,7 +36,7 @@ const server = http.createServer((req, res) => {
     } 
     else if (url === "/system" && req.method === "GET") {
         const sysdata ={
-            platform: os.platform(),
+            platform: os.platform(), 
             arch:os.arch(),
             cpu:os.cpus().length,
             totalRam:(os.totalmem()/1024**3).toFixed(2)+"GB",
